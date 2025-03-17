@@ -1,0 +1,31 @@
+services:
+  cms:
+    build: .
+    volumes:
+      - ./dockervenv:/src/.venv
+      - .:/src
+    ports:
+      - "8000:8000"
+    environment:
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: cms
+      PYTHONPATH: /src
+  db:
+    image: mysql:8.0
+    restart: always
+    platform: linux/x86_64
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: cms
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - 33306:3306
+volumes:
+  mysql-data:
