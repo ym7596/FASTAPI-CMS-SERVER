@@ -7,25 +7,25 @@ from pydantic import BaseModel, ConfigDict
 class SubCategoryCreate(BaseModel):
     model_config = ConfigDict(
         from_attributes=True,
-        json_schema_extra= {
+        json_schema_extra={
             "example": {
-                "subcategory_name": "수도",
+                "subcategory_name": "subcategory_name",
                 "category_id": 1
-                }
             }
-        )
+        }
+    )
     subcategory_name: str
     category_id: int
 
 
 class SubCategoryResponse(BaseModel):
     model_config = ConfigDict(
-    from_attributes=True,
-    json_schema_extra= {
-        "example": {
-            "subcategory_id": 1,
-            "subcategory_name": "수도",
-            "category_id": 1
+        from_attributes=True,
+        json_schema_extra={
+            "example": {
+                "subcategory_id": 1,
+                "subcategory_name": "수도",
+                "category_id": 1
             }
         }
     )
@@ -36,19 +36,19 @@ class SubCategoryResponse(BaseModel):
 class CategoryCreate(BaseModel):
     model_config = ConfigDict(
         from_attributes=True,
-        json_schema_extra= {
+        json_schema_extra={
             "example": {
                 "name": "주방"
-                }
             }
-        )
+        }
+    )
     name: str
 
 
 class CategoryResponse(BaseModel):
     model_config = ConfigDict(
         from_attributes=True,
-        json_schema_extra= {
+        json_schema_extra={
             "example": {
                 "category_id": 1,
                 "category_name": "주방",
